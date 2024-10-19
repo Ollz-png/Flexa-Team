@@ -1,0 +1,144 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace; /* Modern techy font */
+    line-height: 1.6; /* Line height for readability */
+    background-color: #1e1e1e; /* Dark background */
+    color: #f8f8f2; /* Light text color */
+}
+
+/* Header styles */
+header {
+    background: #282a36; /* Slightly lighter dark grey */
+    color: #50fa7b; /* Green color for header text */
+    padding: 20px 0; /* Top and bottom padding */
+    text-align: center; /* Center align text */
+    border-bottom: 2px solid #6272a4; /* Blue border at the bottom */
+    opacity: 0; /* Initial state for fade-in */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+}
+
+/* Main section styles */
+main {
+    padding: 20px; /* Padding for the main content */
+}
+
+/* Section styles for both Penguinmod and Test Files */
+section {
+    margin-top: 20px; /* Space above each section */
+    opacity: 0; /* Initial state for fade-in */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+    animation-delay: 0.5s; /* Delay for sections to create staggered effect */
+}
+
+/* Adding a unique animation delay for each section */
+#penguinmod {
+    animation-delay: 0.5s; /* Delay for Penguinmod section */
+}
+
+#test-files {
+    animation-delay: 1s; /* Delay for Test Files section */
+}
+
+section h2 {
+    color: #50fa7b; /* Green for section headings */
+    margin-bottom: 10px; /* Space below the heading */
+    border-bottom: 2px solid #6272a4; /* Blue border below heading */
+    padding-bottom: 5px; /* Padding below the heading */
+}
+
+/* Remove default list styling for project lists */
+ul {
+    list-style-type: none; /* Remove bullet points */
+}
+
+/* Project item styles */
+li {
+    background: #44475a; /* Dark grey for project items */
+    border: 1px solid #6272a4; /* Light blue border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside list items */
+    margin-bottom: 10px; /* Space between items */
+    transition: background 0.3s; /* Smooth transition for hover effect */
+    opacity: 0; /* Initial state for fade-in */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+    animation-delay: calc(1s + var(--item-index) * 0.1s); /* Staggered effect based on index */
+}
+
+li:hover {
+    background: #6272a4; /* Light blue on hover */
+}
+
+/* Additional styles for download menus */
+.download-menu {
+    margin-top: 10px; /* Space between the project description and the download options */
+}
+
+/* Styles for the source buttons */
+.download-menu button {
+    margin-top: 5px; /* Space between multiple buttons in the download menu */
+}
+
+/* Button styles */
+.toggle-menu {
+    font-family: 'Roboto Mono', monospace; /* Monospace font for buttons */
+    background-color: #50fa7b; /* Green background */
+    color: #282a36; /* Dark text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px 10px; /* Padding for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s, transform 0.2s; /* Smooth transition for hover */
+    margin-left: 10px; /* Space from text */
+}
+
+.toggle-menu:hover {
+    background-color: #6272a4; /* Change background on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+/* Download menu button styles */
+.download-menu button {
+    font-family: 'Roboto Mono', monospace; /* Monospace font for buttons */
+    background: #50fa7b; /* Green background for buttons */
+    color: #282a36; /* Dark text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px 10px; /* Padding for buttons */
+    margin-right: 5px; /* Space between buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s, transform 0.2s; /* Smooth transition for hover */
+}
+
+.download-menu button:hover {
+    background: #6272a4; /* Change background on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+/* Footer styles */
+footer {
+    text-align: center; /* Center align footer text */
+    padding: 10px 0; /* Padding for footer */
+    background: #282a36; /* Dark grey background */
+    color: #f8f8f2; /* Light text color */
+    position: relative; /* Positioning for footer */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width footer */
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start transparent */
+        transform: translateY(20px); /* Move up slightly */
+    }
+    to {
+        opacity: 1; /* End fully opaque */
+        transform: translateY(0); /* Return to original position */
+    }
+}

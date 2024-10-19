@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexa Team Projects</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap" rel="stylesheet"> <!-- Link to Roboto Mono -->
+</head>    
+<body>
+    <header>
+        <h1>Welcome to Flexa Team!</h1>
+        <p>This is a collection of projects and games developed by our team.</p>
+    </header>
+
+    <main>
+        <!-- Penguinmod Section -->
+        <section id="penguinmod">
+            <h2>Penguinmod Projects</h2>
+            <p>Download the projects that have <strong>actually been completed!</strong></p>
+            <ul>
+                <li>
+                    <strong>AYS Template:</strong> A simple AYS template that was built for well, AYS purposes!
+                    <button class="toggle-menu" onclick="toggleMenu('menu1')">Download Options</button>
+                    <div class="download-menu" id="menu1" style="display: none;">
+                        <button onclick="downloadSource('Projects/AYS Template.pmp')">Download Source (.pmp)</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Test Files Section -->
+        <section id="test-files">
+            <h2>Test Files</h2>
+            <p>Check out our test files, which include experimental projects and prototypes.</p>
+            <ul>
+                <li>
+                    <strong>Engine Test:</strong> An engine simulator which is <strong>STUPIDLY UNREALISTIC</strong> but kinda real as it uses math.
+                    <button class="toggle-menu" onclick="toggleMenu('menu4')">Download Options</button>
+                    <div class="download-menu" id="menu4" style="display: none;">
+                        <button onclick="downloadSource('Test Files/Engine Test.pmp')">Download Source (.pmp)</button>
+                    </div>
+                </li>
+            </ul>
+            <p style="margin-top: 10px; font-style: italic; color: #ff5555;"><strong>NOTE:</strong> A lot of the stuff here is unfinished, so don't go yelling at me if something is broken.</p>
+        </section>
+    </main>
+
+    <!-- Overlay for the download menu -->
+    <div id="overlay" class="overlay" style="display: none;" onclick="closeAllMenus()"></div>
+
+    <footer>
+        <p id="random-message"></p> <!-- Placeholder for the random message -->
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
