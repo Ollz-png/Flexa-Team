@@ -33,7 +33,6 @@ section {
     margin-top: 20px; /* Space above each section */
     opacity: 0; /* Initial state for fade-in */
     animation: fadeIn 1s forwards; /* Fade-in animation */
-    animation-delay: 0.5s; /* Delay for sections to create staggered effect */
 }
 
 /* Adding a unique animation delay for each section */
@@ -43,6 +42,10 @@ section {
 
 #test-files {
     animation-delay: 1s; /* Delay for Test Files section */
+}
+
+#lost-protos {
+    animation-delay: 1.5s; /* Delay for Lost Protos section */
 }
 
 section h2 {
@@ -65,23 +68,6 @@ li {
     padding: 10px; /* Padding inside list items */
     margin-bottom: 10px; /* Space between items */
     transition: background 0.3s; /* Smooth transition for hover effect */
-    opacity: 0; /* Initial state for fade-in */
-    animation: fadeIn 1s forwards; /* Fade-in animation */
-    animation-delay: calc(1s + var(--item-index) * 0.1s); /* Staggered effect based on index */
-}
-
-li:hover {
-    background: #6272a4; /* Light blue on hover */
-}
-
-/* Additional styles for download menus */
-.download-menu {
-    margin-top: 10px; /* Space between the project description and the download options */
-}
-
-/* Styles for the source buttons */
-.download-menu button {
-    margin-top: 5px; /* Space between multiple buttons in the download menu */
 }
 
 /* Button styles */
@@ -102,7 +88,12 @@ li:hover {
     transform: scale(1.05); /* Slightly enlarge button on hover */
 }
 
-/* Download menu button styles */
+/* Additional styles for download menus */
+.download-menu {
+    margin-top: 10px; /* Space between the project description and the download options */
+}
+
+/* Styles for the source buttons */
 .download-menu button {
     font-family: 'Roboto Mono', monospace; /* Monospace font for buttons */
     background: #50fa7b; /* Green background for buttons */
