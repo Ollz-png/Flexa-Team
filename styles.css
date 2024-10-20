@@ -10,29 +10,63 @@ body {
     line-height: 1.6; /* Line height for readability */
     background-color: #1e1e1e; /* Dark background */
     color: #f8f8f2; /* Light text color */
+    padding: 0 20px; /* Add some padding to the body for better spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
 }
 
 /* Header styles */
 header {
     background: #282a36; /* Slightly lighter dark grey */
     color: #50fa7b; /* Green color for header text */
-    padding: 20px 0; /* Top and bottom padding */
+    padding: 20px; /* Padding for the header */
     text-align: center; /* Center align text */
     border-bottom: 2px solid #6272a4; /* Blue border at the bottom */
     opacity: 0; /* Initial state for fade-in */
     animation: fadeIn 1s forwards; /* Fade-in animation */
+    position: relative; /* For GitHub icon positioning */
+    width: 100%; /* Full width header */
+    max-width: 1200px; /* Restrict max width */
+    margin-bottom: 20px; /* Space below header */
+    border-radius: 8px; /* Rounded corners for header */
+}
+
+/* Style for the GitHub icon */
+.github-link {
+    position: absolute; /* Position the icon relative to the header */
+    top: 20px; /* Align it at the top */
+    right: 20px; /* Align it at the right */
+    display: block; /* Ensure it's displayed as a block */
+}
+
+.github-icon {
+    width: 40px; /* Set the icon size */
+    height: 40px; /* Set the icon size */
+    transition: transform 0.2s, opacity 0.2s; /* Smooth hover effects */
+}
+
+.github-link:hover .github-icon {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+    opacity: 0.8; /* Slight transparency effect */
 }
 
 /* Main section styles */
 main {
     padding: 20px; /* Padding for the main content */
+    max-width: 1200px; /* Limit width for better readability */
+    width: 100%; /* Ensure content scales well on different screens */
 }
 
 /* Section styles for both Penguinmod and Test Files */
 section {
     margin-top: 20px; /* Space above each section */
+    background-color: #2d2f3a; /* Slightly lighter background for sections */
+    padding: 20px; /* Padding inside sections */
+    border-radius: 8px; /* Rounded corners */
     opacity: 0; /* Initial state for fade-in */
     animation: fadeIn 1s forwards; /* Fade-in animation */
+    border: 1px solid #6272a4; /* Subtle border */
 }
 
 /* Adding a unique animation delay for each section */
@@ -48,6 +82,7 @@ section {
     animation-delay: 1.5s; /* Delay for Lost Protos section */
 }
 
+/* Section headings */
 section h2 {
     color: #50fa7b; /* Green for section headings */
     margin-bottom: 10px; /* Space below the heading */
@@ -64,10 +99,15 @@ ul {
 li {
     background: #44475a; /* Dark grey for project items */
     border: 1px solid #6272a4; /* Light blue border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px; /* Padding inside list items */
-    margin-bottom: 10px; /* Space between items */
-    transition: background 0.3s; /* Smooth transition for hover effect */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside list items */
+    margin-bottom: 15px; /* Space between items */
+    transition: background 0.3s, transform 0.2s; /* Smooth transition for hover effect */
+}
+
+li:hover {
+    background: #6272a4; /* Highlight on hover */
+    transform: translateY(-5px); /* Slight lift on hover */
 }
 
 /* Button styles */
@@ -77,7 +117,7 @@ li {
     color: #282a36; /* Dark text color */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
-    padding: 5px 10px; /* Padding for buttons */
+    padding: 10px 15px; /* Padding for buttons */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background 0.3s, transform 0.2s; /* Smooth transition for hover */
     margin-left: 10px; /* Space from text */
@@ -100,7 +140,7 @@ li {
     color: #282a36; /* Dark text color */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
-    padding: 5px 10px; /* Padding for buttons */
+    padding: 10px 15px; /* Padding for buttons */
     margin-right: 5px; /* Space between buttons */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background 0.3s, transform 0.2s; /* Smooth transition for hover */
@@ -114,12 +154,14 @@ li {
 /* Footer styles */
 footer {
     text-align: center; /* Center align footer text */
-    padding: 10px 0; /* Padding for footer */
+    padding: 20px 0; /* Padding for footer */
     background: #282a36; /* Dark grey background */
     color: #f8f8f2; /* Light text color */
     position: relative; /* Positioning for footer */
-    bottom: 0; /* Stick to the bottom */
     width: 100%; /* Full width footer */
+    max-width: 1200px; /* Restrict max width */
+    margin-top: 20px; /* Space above footer */
+    border-radius: 8px; /* Rounded corners */
 }
 
 /* Keyframe animations */

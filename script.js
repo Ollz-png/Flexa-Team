@@ -19,25 +19,12 @@ function displayRandomMessage() {
 // Function to toggle the download menu
 function toggleMenu(menuId) {
     const menu = document.getElementById(menuId);
-    const overlay = document.getElementById("overlay");
-
+    playSound('click'); // Play click sound effect
     if (menu.style.display === "none" || menu.style.display === "") {
-        overlay.style.display = "flex"; // Show overlay
         menu.style.display = "block"; // Show the menu
     } else {
-        closeAllMenus(); // Close the menu if it’s already open
+        menu.style.display = "none"; // Hide the menu
     }
-}
-
-// Function to close all menus
-function closeAllMenus() {
-    const menus = document.querySelectorAll('.download-menu');
-    const overlay = document.getElementById("overlay");
-
-    menus.forEach(menu => {
-        menu.style.display = "none"; // Hide all menus
-    });
-    overlay.style.display = "none"; // Hide overlay
 }
 
 // Function to download source files
@@ -61,5 +48,14 @@ function downloadGame(htmlFile) {
     }
 }
 
-// Display a random message on page load
-window.onload = displayRandomMessage;
+// Function to play sound effects
+function playSound(soundName) {
+    const audio = new Audio(`Sounds/${soundName}.wav`); // Create a new audio instance
+    audio.play(); // Play the audio
+}
+
+// Play background music on page load
+window.onload = function() {
+    displayRandomMessage();
+    document.getElementById("background-music").play(); // Start playing background music
+};
