@@ -9,6 +9,8 @@ const messages = [
     "Success is the sum of small efforts, repeated day in and day out."
 ];
 
+let allCommits = []; // Store all fetched commits
+
 // Function to display a random message
 function displayRandomMessage() {
     const randomIndex = Math.floor(Math.random() * messages.length);
@@ -16,7 +18,7 @@ function displayRandomMessage() {
     messageElement.textContent = messages[randomIndex]; // Set the random message
 }
 
-// Function to fetch and display recent commits
+// Function to fetch and display commits
 async function fetchCommits() {
     const repo = 'Ollz-png/Flexa-Team'; // Your GitHub repo
     const url = `https://api.github.com/repos/${repo}/commits`;
@@ -25,52 +27,8 @@ async function fetchCommits() {
         const response = await fetch(url);
         if (!response.ok) throw new Error('Failed to fetch commits');
 
-        const commits = await response.json();
-        const commitList = document.getElementById('commit-list');
-        commitList.innerHTML = ''; // Clear existing commits
-
-        // Limit to the recent 5 commits
-        const recentCommits = commits.slice(0, 5);
-
-        // Loop through the recent commits and display them
-        recentCommits.forEach(commit => {
-            const listItem = document.createElement('li');
-            const avatarImg = document.createElement('img');
-            avatarImg.src = commit.author.avatar_url; // User avatar
-            avatarImg.alt = commit.commit.author.name; // Alt text for the image
-            avatarImg.className = 'commit-avatar'; // Add class for styling
-
-            // Create a link for the commit message
-            const commitLink = document.createElement('a');
-            commitLink.href = commit.html_url; // URL of the commit
-            commitLink.target = '_blank'; // Open in a new tab
-            commitLink.textContent = commit.commit.message; // Commit message
-
-            // Create a span for author name and date
-            const commitDetails = document.createElement('span');
-            // Define options for date formatting
-            const options = { 
-                year: '2-digit', // 'numeric' or '2-digit'
-                month: '2-digit', // 'numeric', '2-digit', 'long', etc.
-                day: '2-digit', // 'numeric' or '2-digit'
-                hour: '2-digit', // 'numeric' or '2-digit'
-                minute: '2-digit', // 'numeric' or '2-digit'
-                hour12: true // Use 12-hour format if true, otherwise 24-hour
-            };
-
-            // Get the formatted date and time
-            const formattedDate = new Date(commit.commit.author.date).toLocaleDateString(undefined, options);
-
-            // Set the text content with the date and time
-            commitDetails.textContent = `⠀by ${commit.commit.author.name} on ${formattedDate}`;
-
-
-            // Append elements to the list item
-            listItem.appendChild(avatarImg); // Append avatar
-            listItem.appendChild(commitLink); // Append commit link
-            listItem.appendChild(commitDetails); // Append commit details
-            commitList.appendChild(listItem); // Append list item to the list
-        });
+        allCommits = await response.json(); // Store all commits
+        displayCommits(allCommits.slice(0, 5)); // Display recent commits by default
     } catch (error) {
         console.error('Error fetching commits:', error);
         const commitList = document.getElementById('commit-list');
@@ -78,11 +36,55 @@ async function fetchCommits() {
     }
 }
 
+// Function to display commits in the list
+function displayCommits(commits) {
+    const commitList = document.getElementById('commit-list');
+    commitList.innerHTML = ''; // Clear existing commits
+
+    // Loop through the commits and display them
+    commits.forEach(commit => {
+        const listItem = document.createElement('li');
+        const avatarImg = document.createElement('img');
+        avatarImg.src = commit.author.avatar_url; // User avatar
+        avatarImg.alt = commit.commit.author.name; // Alt text for the image
+        avatarImg.className = 'commit-avatar'; // Add class for styling
+
+        // Create a link for the commit message
+        const commitLink = document.createElement('a');
+        commitLink.href = commit.html_url; // URL of the commit
+        commitLink.target = '_blank'; // Open in a new tab
+        commitLink.textContent = commit.commit.message; // Commit message
+
+        // Create a span for author name and date
+        const commitDetails = document.createElement('span');
+
+        // Define options for date formatting
+        const options = {
+            year: '2-digit', // 'numeric' or '2-digit'
+            month: '2-digit', // 'numeric', '2-digit', 'long', etc.
+            day: '2-digit', // 'numeric' or '2-digit'
+            hour: '2-digit', // 'numeric' or '2-digit'
+            minute: '2-digit', // 'numeric' or '2-digit'
+            hour12: true // Use 12-hour format if true, otherwise 24-hour
+        };
+
+        // Get the formatted date and time
+        const formattedDate = new Date(commit.commit.author.date).toLocaleDateString(undefined, options);
+
+        // Set the text content with the date and time
+        commitDetails.textContent = `⠀by ${commit.commit.author.name} on ${formattedDate}`;
+
+        // Append elements to the list item
+        listItem.appendChild(avatarImg); // Append avatar
+        listItem.appendChild(commitLink); // Append commit link
+        listItem.appendChild(commitDetails); // Append commit details
+        commitList.appendChild(listItem); // Append list item to the list
+    });
+}
 
 // Function to toggle the download menu
 function toggleMenu(menuId) {
     const menu = document.getElementById(menuId);
-    playSound('click'); // Play click sound effect
     if (menu.style.display === "none" || menu.style.display === "") {
         menu.style.display = "block"; // Show the menu
     } else {
@@ -123,3 +125,12 @@ window.onload = function() {
     document.getElementById("background-music").play(); // Start playing background music
     fetchCommits(); // Fetch commits when the page loads
 };
+
+// Event listeners for buttons to show commits
+document.getElementById('show-all-commits').addEventListener('click', () => {
+    displayCommits(allCommits); // Display all commits
+});
+
+document.getElementById('show-recent-commits').addEventListener('click', () => {
+    displayCommits(allCommits.slice(0, 5)); // Display recent commits
+});

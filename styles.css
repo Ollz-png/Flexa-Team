@@ -141,20 +141,20 @@ li:hover {
     margin-top: 10px; /* Space between the project description and the download options */
 }
 
-/* Styles for the source buttons */
-.download-menu button {
+/* Button styles */
+button {
     font-family: 'Roboto Mono', monospace; /* Monospace font for buttons */
-    background: #50fa7b; /* Green background for buttons */
+    background-color: #50fa7b; /* Green background */
     color: #282a36; /* Dark text color */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
     padding: 10px 15px; /* Padding for buttons */
-    margin-right: 5px; /* Space between buttons */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background 0.3s, transform 0.2s; /* Smooth transition for hover */
+    margin: 5px; /* Margin around buttons for spacing */
 }
 
-.download-menu button:hover {
+button:hover {
     background: #6272a4; /* Change background on hover */
     transform: scale(1.05); /* Slightly enlarge button on hover */
 }
