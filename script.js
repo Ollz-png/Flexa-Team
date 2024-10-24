@@ -82,15 +82,29 @@ function displayCommits(commits) {
     });
 }
 
-// Function to toggle the download menu
 function toggleMenu(menuId) {
     const menu = document.getElementById(menuId);
-    if (menu.style.display === "none" || menu.style.display === "") {
-        menu.style.display = "block"; // Show the menu
+    const overlay = document.getElementById('overlay');
+    
+    // Toggle the display of the menu
+    if (menu.style.display === 'none' || menu.style.display === '') {
+        menu.style.display = 'block';
+        overlay.style.display = 'block'; // Show overlay when the menu is open
     } else {
-        menu.style.display = "none"; // Hide the menu
+        menu.style.display = 'none';
+        overlay.style.display = 'none'; // Hide overlay when the menu is closed
     }
 }
+
+// Close all menus if overlay is clicked
+function closeAllMenus() {
+    const menus = document.querySelectorAll('.download-menu');
+    menus.forEach(menu => {
+        menu.style.display = 'none';
+    });
+    document.getElementById('overlay').style.display = 'none';
+}
+
 
 // Function to download source files
 function downloadSource(fileName) {

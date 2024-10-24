@@ -12,8 +12,8 @@
         <h1>Welcome to the Flexa Team!</h1>
         <p>This is a collection of projects and games developed by our team.</p>
         
-        <!-- GitHub link -->
-        <a href="https://github.com/Ollz-png/Flexa-Team" target="_blank" class="github-link">
+        <!-- GitHub link with aria-label -->
+        <a href="https://github.com/Ollz-png/Flexa-Team" target="_blank" class="github-link" aria-label="Link to Flexa Team GitHub">
             <img src="Icons/MarkWhite.svg" alt="GitHub" class="github-icon">
         </a>
     </header>
@@ -32,7 +32,6 @@
                         <button onclick="downloadSource('Projects/AYS Template.pmp')">Download Source (.pmp)</button>
                     </div>
                 </li>
-                <!-- Add more projects here -->
             </ul>
         </section>
 
@@ -49,7 +48,15 @@
                         <button onclick="downloadSource('Test Files/Engine Test.pmp')">Download Source (.pmp)</button>
                     </div>
                 </li>
-                <!-- Add more projects here -->
+
+                <li>
+                    <strong>Stage Editor:</strong> A stage editor for Penguin Engine which is user friendly, but sucks because there is barely anything.
+                    <span class="project-user">Created by: Ollz</span> <!-- User who completed the project -->
+                    <button class="toggle-menu" onclick="toggleMenu('menu5')">Download Options</button>
+                    <div class="download-menu" id="menu5" style="display: none;">
+                        <button onclick="downloadSource('Test Files/PE Stage Editor.pmp')">Download Source (.pmp)</button>
+                    </div>
+                </li>
             </ul>
             <p style="margin-top: 10px; font-style: italic; color: #ff5555;"><strong>NOTE:</strong> A lot of the stuff here is unfinished, so don't go yelling at me if something is broken.</p>
         </section>
@@ -62,7 +69,7 @@
                 <li>
                     <strong>Sonic Engine</strong>
                     This was meant to be a platforming engine like the Classic Sonic games.
-                    <span class="project-user">Found by: Ollz</span> <!-- User who found the project --></li>
+                    <span class="project-user">Found by: Ollz</span> <!-- User who found the project -->
                     <p>A collection of videos related to the Sonic project:</p>
                     <video width="320" height="240" controls>
                         <source src="Lost Protos/Sonic Engine/video1.mp4" type="video/mp4">
@@ -78,18 +85,19 @@
 
                     <p>I couldn't find the project file so that's lost for time now.</p>
                 </li>
-                <!-- Add more project items here as needed -->
+            </ul>
+        </section>
+
+        <!-- Commits Section -->
+        <section>
+            <h2>Commits</h2>
+            <button id="show-all-commits">Show All Commits</button>
+            <button id="show-recent-commits">Show Recent Commits</button>
+            <ul id="commit-list">
+                <!-- Commits will be inserted here -->
             </ul>
         </section>
     </main>
-        <h2>Commits</h2>
-        <button id="show-all-commits">Show All Commits</button>
-        <button id="show-recent-commits">Show Recent Commits</button>
-        <ul id="commit-list">
-        <!-- Commits will be inserted here -->
-        </ul>
-    </section>
-    
 
     <!-- Overlay for the download menu -->
     <div id="overlay" class="overlay" style="display: none;" onclick="closeAllMenus()"></div>
@@ -100,8 +108,8 @@
 
     <script src="script.js"></script> <!-- Link to your JavaScript file -->
 
-    <audio id="background-music" loop>
-        <source src="Sounds/background.wav" type="audio/mpeg">
+    <audio id="background-music" loop autoplay>
+        <source src="Sounds/background.wav" type="audio/wav">
         Your browser does not support the audio tag.
     </audio>
 </body>
